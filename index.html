@@ -1,52 +1,59 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>倒计时页面</title>
+    <title>Freedom CountDown</title>
     <style>
         body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f4f4f4;
+            /* font-family: 'Arial', sans-serif; */
+            background-color: #343131;
+            color: azure;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
+            font-size: 18px
         }
 
         .countdown {
             text-align: center;
-            background: #fff;
             padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .countdown h1 {
-            font-size: 36px;
-            margin-bottom: 20px;
         }
 
         .time {
-            font-size: 48px;
-            color: #333;
+            font-size: 5rem;
         }
 
         .time span {
             display: inline-block;
             margin: 0 10px;
         }
+        .days_label {
+            color: #A04747;
+        }
+        .hours_label {
+            color: #D8A25E;
+        }
+        .minutes_label {
+            color: #EEDF7A;
+        }
+        .seconds_label {
+            color: #EEDF7A;
+        }
+
     </style>
 </head>
+
 <body>
     <div class="countdown">
-        <h1>倒计时至202年3月28日</h1>
         <div class="time" id="countdown">
-            <span id="days">00</span>天
-            <span id="hours">00</span>小时
-            <span id="minutes">00</span>分钟
-            <span id="seconds">00</span>秒
+            <span id="days">00</span><span class="days_label">D</span>
+            <span id="hours">00</span><span class="hours_label">H</span>
+            <span id="minutes">00</span><span class="minutes_label">M</span>
+            <span id="seconds">00</span><span class="seconds_label">S</span>
         </div>
     </div>
 
@@ -65,10 +72,11 @@
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
             // 显示倒计时
-            document.getElementById("days").textContent = days;
-            document.getElementById("hours").textContent = hours;
-            document.getElementById("minutes").textContent = minutes;
-            document.getElementById("seconds").textContent = seconds;
+
+            document.getElementById("days").textContent = String(days).padStart(2, '0');
+            document.getElementById("hours").textContent = String(hours).padStart(2, '0');
+            document.getElementById("minutes").textContent = String(minutes).padStart(2, '0');
+            document.getElementById("seconds").textContent = String(seconds).padStart(2, '0');
 
             // 如果倒计时结束
             if (distance < 0) {
@@ -80,4 +88,5 @@
         setInterval(updateCountdown, 1000);
     </script>
 </body>
+
 </html>
